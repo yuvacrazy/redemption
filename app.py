@@ -13,7 +13,7 @@ import uvicorn
 # CONFIGURATION
 # ---------------------------
 MODEL_PATH = os.getenv("MODEL_PATH", "salary_model_pipeline.pkl")
-API_KEY = os.getenv("API_KEY", "smartpay-secret-key")  # change this to your own
+API_KEY = os.getenv("API_KEY", "*")  # change this to your own
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*")
 
 # ---------------------------
