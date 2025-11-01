@@ -25,12 +25,20 @@ logger = logging.getLogger("smartpay-api")
 # ---------------------------
 # LOAD MODEL PIPELINE
 # ---------------------------
+
 try:
+    import os
+    print("📁 Current directory:", os.getcwd())
+    print("🔎 Files in directory:", os.listdir())
     model = joblib.load(MODEL_PATH)
-    logger.info("✅ Salary prediction pipeline loaded successfully.")
+    print("✅ Model loaded successfully.")
+except FileNotFoundError:
+    print(f"❌ Model file not found at {MODEL_PATH}")
+    raise RuntimeError("Model file missing. Check your repository structure.")
 except Exception as e:
-    logger.exception("❌ Failed to load model pipeline: %s", e)
+    print(f"❌ Model loading failed: {e}")
     raise RuntimeError("Model loading failed. Check model path or file integrity.")
+
 
 # ---------------------------
 # FASTAPI INITIALIZATION
